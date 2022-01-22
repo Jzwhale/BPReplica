@@ -24,6 +24,8 @@ LETTERS_FOR_LIFE = "abcdefghijlmnopqrstuv"
 STARTING_LIVES = 3
 MAX_LIVES = 5
 
+ALLOW_HYPHENATED_PROMPTS = False
+
 ##############################################
 # MISC
 
@@ -110,6 +112,9 @@ def generatePrompt():
     for letter in accented_letters:
       if letter in chosen_word:
         success = False
+
+    if ALLOW_HYPHENATED_PROMPTS == False and "-" in chosen_word:
+      success = False
       
   random_letter = random.randint(0,len(chosen_word)-x)
   letters = chosen_word[random_letter:random_letter+x]
